@@ -1,9 +1,11 @@
 private double fractionLength = .8; 
 private int smallestBranch = 10; 
 private double branchAngle = .2;  
+private int sizeX = 800;
+private int sizeY= 800;
 public void setup() 
 {   
-	size(640,480);    
+	size(sizeX,sizeY);    
 	noLoop(); 
 } 
 
@@ -11,18 +13,20 @@ public void draw()
 {   
 	background(0);   
 	stroke(0,255,0);   
-	line(320,480,320,380);   
-	drawBranches(320,380,100,3*Math.PI/2);  //will add later 
+	line(sizeX/2,sizeY,sizeX/2,sizeY-100);   
+	drawBranches(sizeX/2,sizeY-100,100,3*Math.PI/2);  //will add later 
 
 
 } 
-	public void keyTyped() {
+	public void keyPressed() {
 	 if (key == CODED) {
-    if (keyCode == UP && fractionLength<.98) {
+     if (keyCode == UP&&fractionLength<.95) {
       fractionLength=fractionLength+.02;
+      smallestBranch=smallestBranch-1;
     	} 
     else if (keyCode == DOWN) {
-      fractionLength=fractionLength+.02;
+      fractionLength=fractionLength-.02;
+      smallestBranch=smallestBranch+1;
    	 } 
    	 else
    	 {}
